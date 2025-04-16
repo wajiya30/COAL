@@ -1,0 +1,61 @@
+TASK 1
+org 100h
+
+.model
+.stack 100h
+.data
+.code
+main proc
+mov dl, '5' 
+mov ah, 2h
+int 21h
+mov dl, '8'
+mov ah, 2h
+int 21h
+mov dl, '9'
+mov ah, 2h
+int 21h
+mov dl, '0'
+mov ah, 2h
+int 21h
+mov dl, '8'
+mov ah, 2h
+int 21h 
+
+main endp
+end main
+
+
+//TASK 2
+org 100h 
+.model
+.stack 100h
+
+.CODE  
+
+MAIN PROC  
+                        
+    MOV AH, 01H  
+    INT 21H  
+    SUB AL, 30H     
+    MOV DL, AL      
+  
+    MOV AH, 01H  
+    INT 21H  
+    SUB AL, 30H    
+    ADD DL, AL    
+
+    ADD DL, 30H    
+    MOV AH, 02H  
+    INT 21H  
+
+     
+    MOV AH, 4CH  
+    INT 21H  
+
+MAIN ENDP  
+END MAIN
+
+
+
+
