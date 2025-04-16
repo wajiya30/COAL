@@ -1,0 +1,57 @@
+
+//Task 1
+org 100h   ; Set program start for DOS
+
+.code
+    mov dl, 'A'  ; Load the character to be printed into DL
+    mov ah, 2    ; DOS interrupt for displaying character
+    int 21h      ; Display character
+//Task 2 
+ org 100h   ; Set program start for DOS
+
+.code
+   mov ah, 2    ; DOS interrupt for displaying character
+
+    ; Print 'W'
+    mov dl, 'W'
+    int 21h
+
+    ; Print 'a'
+    mov dl, 'a'
+    int 21h
+
+    ; Print 'j'
+    mov dl, 'j'
+    int 21h
+
+    ; Print 'i'
+    mov dl, 'i'
+    int 21h
+
+    ; Print 'y'
+    mov dl, 'y'
+    int 21h
+
+    ; Print 'a'
+    mov dl, 'a'
+    int 21h
+
+    ; Move to the next line
+    mov dl, 10    ; ASCII code for new line
+    int 21h
+    mov dl, 13    ; ASCII code for carriage return
+    int 21h
+
+
+//TASK 3
+org 100h   ; Set program start for DOS
+s
+.code
+    mov ah, 1     ; Input character from user
+    int 21h       ; Store input in AL
+
+    sub al, 32    ; Convert to uppercase (ASCII difference between lowercase and uppercase)
+
+    mov dl, al    ; Move converted character to DL for output
+    mov ah, 2     ; DOS interrupt for displaying character
+    int 21h       ; Display character
