@@ -1,0 +1,216 @@
+//TASK 1
+model small
+.stack 100h
+
+.data
+    msg db 'Enter a number : $'
+    resultMsg db 0Dh, 0Ah, 'The square is: $'
+    number db ?
+    squared db ?
+
+.code
+main proc
+    
+    mov ax, @data
+    mov ds, ax
+
+    
+    mov dx, offset msg
+    mov ah, 09h     
+    int 21h
+
+    mov ah, 01h     
+    int 21h
+    sub al, 48       
+    mov number, al   
+
+    mov al, number   
+    mul al           
+    mov squared, al  
+
+   
+    mov dx, offset resultMsg
+    mov ah, 09h      
+    int 21h
+
+   
+    mov al, squared
+    add al, 48       
+    mov dl, al       
+    mov ah, 02h     
+    int 21h
+
+    mov ah, 4ch      
+    int 21h
+main endp
+end main
+
+
+//TASK2
+
+
+
+org 100h
+ .model small
+.stack 100h
+
+.data
+    msg db 'Enter a number: $'
+    resultMsg db 0Dh, 0Ah, 'The cube is: $'
+    number db ?
+    cubed db ?
+
+.code
+main proc
+    mov ax, @data
+    mov ds, ax
+
+    mov dx, offset msg
+    mov ah, 09h
+    int 21h
+
+    mov ah, 01h
+    int 21h
+    sub al, 48
+    mov number, al
+
+    mov al, number
+    mul al
+    mov bl, al
+
+    mov al, number
+    mul bl
+    mov cubed, al
+
+    mov dx, offset resultMsg
+    mov ah, 09h
+    int 21h
+
+    mov al, cubed
+    add al, 48
+    mov dl, al
+    mov ah, 02h
+    int 21h
+
+    mov ah, 4ch
+    int 21h
+main endp
+end main
+
+//TASK3
+
+
+                                      .model small
+.stack 100h
+
+.data
+    msg1 db 'Enter the first number : $'
+    msg2 db 0Dh, 0Ah, 'Enter the second number : $'
+    resultMsg db 0Dh, 0Ah, 'The product is: $'
+    num1 db ?
+    num2 db ?
+    product db ?
+
+.code
+main proc
+    mov ax, @data
+    mov ds, ax
+
+    mov dx, offset msg1
+    mov ah, 09h
+    int 21h
+
+    mov ah, 01h
+    int 21h
+    sub al, 48
+    mov num1, al
+
+    mov dx, offset msg2
+    mov ah, 09h
+    int 21h
+
+    mov ah, 01h
+    int 21h
+    sub al, 48
+    mov num2, al
+
+    mov al, num1
+    mov bl, num2
+    mul bl
+    mov product, al
+
+    mov dx, offset resultMsg
+    mov ah, 09h
+    int 21h
+
+    mov al, product
+    add al, 48
+    mov dl, al
+    mov ah, 02h
+    int 21h
+
+    mov ah, 4ch
+    int 21h
+main endp
+end main
+
+
+TASK4
+
+
+.model small
+.stack 100h
+
+.data
+    msgBase db 'Enter the base of the triangle (0-255): $'
+    msgHeight db 0Dh, 0Ah, 'Enter the height of the triangle (0-255): $'
+    resultMsg db 0Dh, 0Ah, 'The area of the triangle is: $'
+    base db ?
+    height db ?
+    area db ?
+
+.code
+main proc
+    mov ax, @data
+    mov ds, ax
+
+    mov dx, offset msgBase
+    mov ah, 09h
+    int 21h
+
+    mov ah, 01h
+    int 21h
+    sub al, 48
+    mov base, al
+
+    mov dx, offset msgHeight
+    mov ah, 09h
+    int 21h
+
+    mov ah, 01h
+    int 21h
+    sub al, 48
+    mov height, al
+
+    mov al, base
+    mov bl, height
+    mul bl
+    shr ax, 1
+
+    mov area, al
+
+    mov dx, offset resultMsg
+    mov ah, 09h
+    int 21h
+
+    mov al, area
+    add al, 48
+    mov dl, al
+    mov ah, 02h
+    int 21h
+
+    mov ah, 4ch
+    int 21h
+main endp
+end main
+
