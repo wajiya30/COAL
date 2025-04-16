@@ -1,0 +1,137 @@
+TASK 1
+
+.STACK 100H
+.DATA
+    Msg1 DB 'Name: Jiya', 10, 13, '$'  
+    Msg2 DB 'Age: 20', 10, 13, '$'  
+    Msg3 DB 'Degree: Software Engineering', 10, 13, '$'  
+    Msg4 DB 'University: Riphah University', 10, 13, '$'  
+    Msg5 DB 'Skills: C++, Java, Assembly', 10, 13, '$'  
+    Msg6 DB 'Contact: jiya@example.com', 10, 13, '$'  
+
+.CODE
+MAIN PROC
+    MOV AX, @DATA  
+    MOV DS, AX   
+
+    MOV DX, OFFSET Msg1  
+    MOV AH, 9
+    INT 21H
+
+    MOV DX, OFFSET Msg2  
+    MOV AH, 9
+    INT 21H
+
+    MOV DX, OFFSET Msg3  
+    MOV AH, 9
+    INT 21H
+
+    MOV DX, OFFSET Msg4  
+    MOV AH, 9
+    INT 21H
+
+    MOV DX, OFFSET Msg5  
+    MOV AH, 9
+    INT 21H
+
+    MOV DX, OFFSET Msg6  
+    MOV AH, 9
+    INT 21H
+
+    MOV AH, 4CH
+    INT 21H
+MAIN ENDP
+END MAIN
+
+
+//TASK2
+
+.MODEL SMALL
+.STACK 100H
+.DATA
+    Msg1 DB 'Enter a character: $'
+    Msg2 DB 'The user entered: $'
+    NewLine DB 10, 13, '$' 
+    Char DB ?  ; 
+
+.CODE
+MAIN PROC
+    MOV AX, @DATA
+    MOV DS, AX
+
+    MOV DX, OFFSET Msg1
+    MOV AH, 9
+    INT 21H
+
+    
+    MOV AH, 1
+    INT 21H
+    MOV Char, AL  ; 
+
+    MOV DX, OFFSET NewLine
+    MOV AH, 9
+    INT 21H
+    MOV DX, OFFSET Msg2
+    MOV AH, 9
+    INT 21H
+
+    MOV DL, Char
+    MOV AH, 2
+    INT 21H
+
+    ; Exit program
+    MOV AH, 4CH
+    INT 21H
+MAIN ENDP
+END MAIN
+
+
+//TASK3
+
+
+	.MODEL SMALL
+.STACK 100H
+.DATA
+    Msg1 DB 'Enter a lowercase letter: $'
+    Msg2 DB 'Uppercase letter: $'
+    NewLine DB 10, 13, '$'  
+    Char DB ?  
+
+.CODE
+MAIN PROC
+    MOV AX, @DATA
+    MOV DS, AX
+
+    
+    MOV DX, OFFSET Msg1
+    MOV AH, 9
+    INT 21H
+
+    MOV AH, 1
+    INT 21H
+    MOV Char, AL  
+
+    
+    MOV DX, OFFSET NewLine
+    MOV AH, 9
+    INT 21H
+
+  
+    MOV DX, OFFSET Msg2
+    MOV AH, 9
+    INT 21H
+
+    
+    MOV AL, Char  
+
+    SUB AL, 32  
+
+    MOV DL, AL  
+    MOV AH, 2  
+    INT 21H  
+
+    MOV AH, 4CH
+    INT 21H
+MAIN ENDP
+END MAIN
+
